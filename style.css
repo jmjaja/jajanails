@@ -322,8 +322,6 @@ section[id] {
     display: grid;
     gap: 20px; /* Kept reduced gap */
     margin-top: 20px;
-    /* max-width and margin: auto for centering grid container removed from here
-       as specific item placement is now used for desktop centering */
 }
 
 .project-item {
@@ -370,24 +368,17 @@ section[id] {
     font-size: 1rem;
 }
 
-/* --- Desktop and Wider Screens (All 5 in a single row) --- */
 @media (min-width: 769px) {
     .project-grid {
-        grid-template-columns: repeat(5, 1fr); /* 5 columns for desktop */
-        /* You might want to add a max-width here if the screen gets too wide,
-           otherwise 1fr will make each image very large.
-           Example: max-width: 1600px; margin: 0 auto;
-           For now, letting them stretch */
+        grid-template-columns: repeat(5, 1fr);
     }
 
-    /* Remove specific nth-child overrides for desktop as all items are in one row */
     .project-item:nth-child(4),
     .project-item:nth-child(5) {
-        grid-column: auto; /* Reset column placement */
+        grid-column: auto;
     }
 }
 
-/* --- Tablet and Smaller Desktop Screens (Responsive, potentially 2 columns or more if space allows) --- */
 @media (max-width: 768px) {
     .main-header {
         flex-direction: row;
@@ -497,12 +488,11 @@ section[id] {
         margin-right: 8px;
     }
     .project-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-fit to 1 or 2 columns */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
-        /* Ensure no specific nth-child overrides apply */
         .project-item:nth-child(4),
         .project-item:nth-child(5) {
-            grid-column: auto; /* Reset column placement for smaller screens */
+            grid-column: auto;
         }
     }
     .project-grid img {
@@ -510,7 +500,6 @@ section[id] {
     }
 }
 
-/* --- Very Small Phone Screens (Ladder of photos - 1 column) --- */
 @media (max-width: 480px) {
     .main-header {
         padding: 3px 6px;
@@ -559,5 +548,89 @@ section[id] {
     }
     .project-grid img {
         height: auto;
+    }
+}
+
+#inspo h2 a {
+    display: inline-block;
+    background-color: #D9D5CB;
+    color: #262626;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #B5B1A8;
+}
+
+#inspo h2 a:hover {
+    background-color: #BFBFBD;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+    border-color: #8C8C8C;
+}
+
+#inspo p {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+#inspo h2 {
+    margin-bottom: 0;
+}
+
+.inspo-page {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.inspo-page .content-section {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.inspo-page .hero-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+.inspo-page .projects {
+    flex-grow: 1;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+}
+
+.inspo-page .main-footer {
+    margin-top: 0;
+    border-radius: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .inspo-page .hero-section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .inspo-page .projects {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inspo-page .hero-section {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .inspo-page .projects {
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
 }
